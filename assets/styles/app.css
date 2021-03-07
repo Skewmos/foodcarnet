@@ -1,0 +1,67 @@
+.homeTexte {
+    margin-top: 150px;
+    margin-left: 65px;
+    height: 500px;
+}
+.homeTexte h1 {
+    margin-bottom: 7%;
+    color: wheat;
+}
+
+.homeTexte p {
+    margin-bottom: 5%;
+    color: whitesmoke;
+}
+
+.homeImage {
+    background-image: url("/assets//images/home-background.jpeg");
+    background-repeat: no-repeat;
+    height: 500px;
+    background-size: cover;
+    margin: 0;
+}
+.homeImage::before {
+    padding: 0;
+    margin: 0;
+}
+
+
+.bg-primary {
+    background-color: #3B0086 !important;
+}
+
+
+.blocTexte{
+    background: #6200B3;
+    height: 500px;
+}
+
+.btn-secondary {
+    background: #290628;
+    border: none;
+}
+
+.btn-danger {
+    background: #3C1D3C;
+    border: none;
+}
+
+.btn-primary {
+    background: #B43E8F;
+    border: none;
+}
+
+.card-img {
+    filter: blur(2px);
+}
+
+.card-title {
+    color: #290628;
+    text-shadow: 1px 1px 2px #3C1D3C;
+    font-size: 24px;
+    font-weight: bolder;
+}
+
+.card-text {
+    color: black;
+}

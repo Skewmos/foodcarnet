@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Controller;
+namespace App\Controller\Admin;
 
 use App\Entity\Image;
 use App\Form\ImageType;
@@ -20,7 +20,7 @@ class ImageController extends AbstractController
      */
     public function index(ImageRepository $imageRepository): Response
     {
-        return $this->render('image/index.html.twig', [
+        return $this->render('admin/image/index.html.twig', [
             'images' => $imageRepository->findAll(),
         ]);
     }
@@ -42,7 +42,7 @@ class ImageController extends AbstractController
             return $this->redirectToRoute('image_index');
         }
 
-        return $this->render('image/new.html.twig', [
+        return $this->render('admin/image/new.html.twig', [
             'image' => $image,
             'form' => $form->createView(),
         ]);
@@ -72,7 +72,7 @@ class ImageController extends AbstractController
             return $this->redirectToRoute('image_index');
         }
 
-        return $this->render('image/edit.html.twig', [
+        return $this->render('admin/image/edit.html.twig', [
             'image' => $image,
             'form' => $form->createView(),
         ]);

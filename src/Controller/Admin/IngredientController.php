@@ -1,6 +1,5 @@
 <?php
-
-namespace App\Controller;
+namespace App\Controller\Admin;
 
 use App\Entity\Ingredient;
 use App\Form\IngredientType;
@@ -20,7 +19,7 @@ class IngredientController extends AbstractController
      */
     public function index(IngredientRepository $ingredientRepository): Response
     {
-        return $this->render('ingredient/index.html.twig', [
+        return $this->render('admin/ingredient/index.html.twig', [
             'ingredients' => $ingredientRepository->findAll(),
         ]);
     }
@@ -42,7 +41,7 @@ class IngredientController extends AbstractController
             return $this->redirectToRoute('ingredient_index');
         }
 
-        return $this->render('ingredient/new.html.twig', [
+        return $this->render('admin/ingredient/new.html.twig', [
             'ingredient' => $ingredient,
             'form' => $form->createView(),
         ]);
@@ -72,7 +71,7 @@ class IngredientController extends AbstractController
             return $this->redirectToRoute('ingredient_index');
         }
 
-        return $this->render('ingredient/edit.html.twig', [
+        return $this->render('admin/ingredient/edit.html.twig', [
             'ingredient' => $ingredient,
             'form' => $form->createView(),
         ]);

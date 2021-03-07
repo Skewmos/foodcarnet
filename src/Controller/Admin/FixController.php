@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Controller;
+namespace App\Controller\Admin;
 
 use App\Entity\Fix;
 use App\Form\FixType;
@@ -20,7 +20,7 @@ class FixController extends AbstractController
      */
     public function index(FixRepository $fixRepository): Response
     {
-        return $this->render('fix/index.html.twig', [
+        return $this->render('admin/fix/index.html.twig', [
             'fixes' => $fixRepository->findAll(),
         ]);
     }
@@ -42,7 +42,7 @@ class FixController extends AbstractController
             return $this->redirectToRoute('fix_index');
         }
 
-        return $this->render('fix/new.html.twig', [
+        return $this->render('admin/fix/new.html.twig', [
             'fix' => $fix,
             'form' => $form->createView(),
         ]);
@@ -53,7 +53,7 @@ class FixController extends AbstractController
      */
     public function show(Fix $fix): Response
     {
-        return $this->render('fix/show.html.twig', [
+        return $this->render('admin/fix/show.html.twig', [
             'fix' => $fix,
         ]);
     }
@@ -72,7 +72,7 @@ class FixController extends AbstractController
             return $this->redirectToRoute('fix_index');
         }
 
-        return $this->render('fix/edit.html.twig', [
+        return $this->render('admin/fix/edit.html.twig', [
             'fix' => $fix,
             'form' => $form->createView(),
         ]);

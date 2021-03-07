@@ -1,6 +1,7 @@
 <?php
 
-namespace App\Controller;
+namespace App\Controller\Admin;
+
 
 use App\Entity\Recipe;
 use App\Form\RecipeType;
@@ -20,7 +21,7 @@ class RecipeController extends AbstractController
      */
     public function index(RecipeRepository $recipeRepository): Response
     {
-        return $this->render('recipe/index.html.twig', [
+        return $this->render('admin/recipe/index.html.twig', [
             'recipes' => $recipeRepository->findAll(),
         ]);
     }
@@ -42,7 +43,7 @@ class RecipeController extends AbstractController
             return $this->redirectToRoute('recipe_index');
         }
 
-        return $this->render('recipe/new.html.twig', [
+        return $this->render('admin/recipe/new.html.twig', [
             'recipe' => $recipe,
             'form' => $form->createView(),
         ]);
@@ -53,7 +54,7 @@ class RecipeController extends AbstractController
      */
     public function show(Recipe $recipe): Response
     {
-        return $this->render('recipe/show.html.twig', [
+        return $this->render('admin/recipe/show.html.twig', [
             'recipe' => $recipe,
         ]);
     }
@@ -72,7 +73,7 @@ class RecipeController extends AbstractController
             return $this->redirectToRoute('recipe_index');
         }
 
-        return $this->render('recipe/edit.html.twig', [
+        return $this->render('admin/recipe/edit.html.twig', [
             'recipe' => $recipe,
             'form' => $form->createView(),
         ]);

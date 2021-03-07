@@ -1,0 +1,23 @@
+body {
+    background: rgb(41,6,40);
+background: -moz-linear-gradient(90deg, rgba(41,6,40,1) 0%, rgba(59,0,134,1) 30%, rgba(102,22,137,1) 77%, rgba(180,62,143,1) 100%);
+background: -webkit-linear-gradient(90deg, rgba(41,6,40,1) 0%, rgba(59,0,134,1) 30%, rgba(102,22,137,1) 77%, rgba(180,62,143,1) 100%);
+background: linear-gradient(90deg, rgba(41,6,40,1) 0%, rgba(59,0,134,1) 30%, rgba(102,22,137,1) 77%, rgba(180,62,143,1) 100%);
+filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#290628",endColorstr="#b43e8f",GradientType=1);
+}
+
+.bannerInfo {
+    color: white;
+}
+
+h3 {
+    color: white;
+}
+
+label {
+    color: white;
+}
+
+.blocLogin {
+    margin-top: 15%;
+}
