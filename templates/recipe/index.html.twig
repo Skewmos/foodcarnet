@@ -1,0 +1,20 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello RecipeController!{% endblock %}
+
+{% block body %}
+    <div class="container">
+        <div class="row">
+            <div class="col-md-3">
+                {% include 'recipe/_filter.html.twig'  with {form: form} only%}
+            </div>
+            <div class="col-md-9">
+                <div class="grid">
+            {% for recipe in  recipes %}
+                {% include 'recipe/_card.html.twig' with  {recipe: recipe} only %}
+            {% endfor %}
+        </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}

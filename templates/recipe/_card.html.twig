@@ -1,0 +1,12 @@
+<div class="card">
+    <img src="https://picsum.photos/id/{{random(10, 500)}}/150/150" alt="recipe image" class="card-img-top">
+    <div class="card-body">
+        <h5 class="card-title">{{recipe.name}}</h5>
+        <div class="card-title text-primary" style="font-weight:bold;">
+        {{recipe.price | number_format(0, ',', ' ')}} €
+        </div>
+        <p class="text-muted">
+            {{recipe.Description |u.truncate(50, '...')}}
+        </p>
+    </div>
+</div>
