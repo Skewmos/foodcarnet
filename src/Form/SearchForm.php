@@ -25,21 +25,21 @@ class SearchForm extends AbstractType
                     'placeholder' => 'Rechercher'
                 ]
             ])
-            ->add('category', EntityType::class, [
+            ->add('categories', EntityType::class, [
                 'label' => false,
                 'required' => false,
                 'class' => Category::class,
                 'expanded' => true,
                 'multiple' => true 
             ])
-            ->add('min', NumberType::class, [
+            ->add('minPrice', NumberType::class, [
                 'label' => false,
                 'required' => false,
                 'attr' => [
                     'placeholder' => 'Prix min'
                 ]
             ])
-            ->add('max', NumberType::class, [
+            ->add('maxPrice', NumberType::class, [
                 'label' => false,
                 'required' => false,
                 'attr' => [

@@ -8,5 +8,12 @@
         <p class="text-muted">
             {{recipe.Description |u.truncate(50, '...')}}
         </p>
+        <div>
+            {% for c in recipe.idcategory %}
+               {% if c != null %}
+                 <em class="text-muted text-primary text-italic">#{{c.name}}</em>
+               {% endif %}
+            {% endfor %}
+        </div>
     </div>
 </div>

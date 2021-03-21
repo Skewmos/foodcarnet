@@ -11,12 +11,24 @@
                 grid-template-columns: repeat(3, 1fr);
                 grid-gap:20px;
             }
-        </style>
 
+            .filter {
+                display: block;
+                position: sticky;
+                top: 20px;
+            }
+        </style>
+        {{ encore_entry_link_tags('app') }}
+        {{ encore_entry_script_tags('app') | replace({'src=': 'defer src='}) | raw}}
         {% block javascripts %}
         {% endblock %}
     </head>
     <body>
-        {% block body %}{% endblock %}
+        <nav class="navbar navvar-dark bg-primary">
+            <a href="/" class="navbar-brand mb-0 h1">Recettes</a>
+        </nav>
+       <div style="margin-top:5rem;">
+         {% block body %}{% endblock %}
+       </div>
     </body>
 </html>

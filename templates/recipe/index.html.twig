@@ -1,20 +1,28 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Hello RecipeController!{% endblock %}
+{% block title %}FoodCarnet | Recettes{% endblock %}
 
 {% block body %}
     <div class="container">
         <div class="row">
             <div class="col-md-3">
-                {% include 'recipe/_filter.html.twig'  with {form: form} only%}
+                {% include 'recipe/_filter.html.twig'  with {form: form, minPrice: minPrice, maxPrice: maxPrice} only%}
             </div>
             <div class="col-md-9">
+                <div class="d-flex justify-content-end mb-2">
+                    {{ knp_pagination_sortable(recipes, 'Prix', 'r.price') }}
+                </div>
                 <div class="grid">
-            {% for recipe in  recipes %}
-                {% include 'recipe/_card.html.twig' with  {recipe: recipe} only %}
-            {% endfor %}
-        </div>
+                    {% for recipe in  recipes %}
+                        {% include 'recipe/_card.html.twig' with  {recipe: recipe} only %}
+                     {% endfor %}
+                </div>
+
+                <div class="mt-4">
+                    {{ knp_pagination_render(recipes) }}
+                </div>
             </div>
         </div>
+
     </div>
 {% endblock %}
