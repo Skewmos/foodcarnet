@@ -17,6 +17,8 @@ class FixController extends AbstractController
 {
     /**
      * @Route("/", name="fix_index", methods={"GET"})
+     * @param FixRepository $fixRepository
+     * @return Response
      */
     public function index(FixRepository $fixRepository): Response
     {
@@ -27,6 +29,8 @@ class FixController extends AbstractController
 
     /**
      * @Route("/new", name="fix_new", methods={"GET","POST"})
+     * @param Request $request
+     * @return Response
      */
     public function new(Request $request): Response
     {
@@ -50,6 +54,8 @@ class FixController extends AbstractController
 
     /**
      * @Route("/{idfix}", name="fix_show", methods={"GET"})
+     * @param Fix $fix
+     * @return Response
      */
     public function show(Fix $fix): Response
     {
@@ -60,6 +66,9 @@ class FixController extends AbstractController
 
     /**
      * @Route("/{idfix}/edit", name="fix_edit", methods={"GET","POST"})
+     * @param Request $request
+     * @param Fix $fix
+     * @return Response
      */
     public function edit(Request $request, Fix $fix): Response
     {
@@ -80,6 +89,9 @@ class FixController extends AbstractController
 
     /**
      * @Route("/{idfix}", name="fix_delete", methods={"DELETE"})
+     * @param Request $request
+     * @param Fix $fix
+     * @return Response
      */
     public function delete(Request $request, Fix $fix): Response
     {

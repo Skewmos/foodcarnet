@@ -1,0 +1,13 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Edit Fix{% endblock %}
+
+{% block body %}
+    <h1>Edit Fix</h1>
+
+    {{ include('fix/_form.html.twig', {'button_label': 'Update'}) }}
+
+    <a href="{{ path('fix_index') }}">back to list</a>
+
+    {{ include('fix/_delete_form.html.twig') }}
+{% endblock %}

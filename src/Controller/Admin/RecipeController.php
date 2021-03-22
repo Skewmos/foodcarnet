@@ -2,7 +2,6 @@
 
 namespace App\Controller\Admin;
 
-
 use App\Entity\Recipe;
 use App\Form\RecipeType;
 use App\Repository\RecipeRepository;
@@ -18,6 +17,8 @@ class RecipeController extends AbstractController
 {
     /**
      * @Route("/", name="recipe_index", methods={"GET"})
+     * @param RecipeRepository $recipeRepository
+     * @return Response
      */
     public function index(RecipeRepository $recipeRepository): Response
     {
@@ -28,6 +29,8 @@ class RecipeController extends AbstractController
 
     /**
      * @Route("/new", name="recipe_new", methods={"GET","POST"})
+     * @param Request $request
+     * @return Response
      */
     public function new(Request $request): Response
     {
@@ -51,6 +54,8 @@ class RecipeController extends AbstractController
 
     /**
      * @Route("/{idrecipe}", name="recipe_show", methods={"GET"})
+     * @param Recipe $recipe
+     * @return Response
      */
     public function show(Recipe $recipe): Response
     {
@@ -61,6 +66,9 @@ class RecipeController extends AbstractController
 
     /**
      * @Route("/{idrecipe}/edit", name="recipe_edit", methods={"GET","POST"})
+     * @param Request $request
+     * @param Recipe $recipe
+     * @return Response
      */
     public function edit(Request $request, Recipe $recipe): Response
     {
@@ -81,6 +89,9 @@ class RecipeController extends AbstractController
 
     /**
      * @Route("/{idrecipe}", name="recipe_delete", methods={"DELETE"})
+     * @param Request $request
+     * @param Recipe $recipe
+     * @return Response
      */
     public function delete(Request $request, Recipe $recipe): Response
     {

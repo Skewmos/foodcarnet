@@ -1,0 +1,11 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}New Fix{% endblock %}
+
+{% block body %}
+    <h1>Create new Fix</h1>
+
+    {{ include('admin/fix/_form.html.twig') }}
+
+    <a href="{{ path('fix_index') }}">back to list</a>
+{% endblock %}

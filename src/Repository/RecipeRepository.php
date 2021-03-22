@@ -2,9 +2,13 @@
 
 namespace App\Repository;
 
+use App\Data\SearchData;
 use App\Entity\Recipe;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
+use Doctrine\ORM\QueryBuilder;
 use Doctrine\Persistence\ManagerRegistry;
+use Knp\Component\Pager\PaginatorInterface;
+use phpDocumentor\Reflection\Types\This;
 
 /**
  * @method Recipe|null find($id, $lockMode = null, $lockVersion = null)
@@ -14,37 +18,76 @@ use Doctrine\Persistence\ManagerRegistry;
  */
 class RecipeRepository extends ServiceEntityRepository
 {
-    public function __construct(ManagerRegistry $registry)
+    /**
+     * @var PaginatorInterface
+     */
+    private $paginator;
+
+    public function __construct(ManagerRegistry $registry, PaginatorInterface $paginator)
     {
         parent::__construct($registry, Recipe::class);
+        $this->paginator = $paginator;
     }
 
-    // /**
-    //  * @return Recipe[] Returns an array of Recipe objects
-    //  */
-    /*
-    public function findByExampleField($value)
-    {
-        return $this->createQueryBuilder('r')
-            ->andWhere('r.exampleField = :val')
-            ->setParameter('val', $value)
-            ->orderBy('r.id', 'ASC')
-            ->setMaxResults(10)
-            ->getQuery()
-            ->getResult()
-        ;
-    }
-    */
+    /**
+     * Get all recipeListe  by search
+     * @param SearchData $search
+     * @return \Knp\Component\Pager\Pagination\PaginationInterface
+     */
 
-    /*
-    public function findOneBySomeField($value): ?Recipe
-    {
-        return $this->createQueryBuilder('r')
-            ->andWhere('r.exampleField = :val')
-            ->setParameter('val', $value)
-            ->getQuery()
-            ->getOneOrNullResult()
-        ;
-    }
-    */
+     public function findSearch(SearchData $search): \Knp\Component\Pager\Pagination\PaginationInterface
+     {
+         $query = $this->getSearchQuery($search)->getQuery();
+        return $this->paginator->paginate(
+          $query,
+          $search->page,
+          15
+        );
+     }
+
+    /**
+     * @param SearchData $search
+     * @return array
+     */
+    public  function findMinMax(SearchData $search): array
+     {
+         $result = $this->getSearchQuery($search, true)
+             ->select('MIN(r.price) as minPrice', 'MAX(r.price) as maxPrice')
+             ->getQuery()
+             ->getScalarResult();
+         return [(int)$result[0]['minPrice'], (int)$result[0]['maxPrice']];
+     }
+
+
+     private function getSearchQuery(SearchData $search, $ignorePrice  = false): QueryBuilder
+     {
+         $query = $this
+             ->createQueryBuilder('r');
+         //->select('c', 'r')
+         //->join('r.idcategory', 'c');
+
+         if(!empty($search->q)) {
+             $query = $query
+                 ->andWhere('r.name Like :q')
+                 ->setParameter('q', "%{$search->q}%");
+         }
+
+         if(!empty($search->minPrice) && $ignorePrice === false) {
+             $query = $query
+                 ->andWhere('r.price >= :minPrice')
+                 ->setParameter('minPrice', "%{$search->minPrice}%");
+         }
+         if(!empty($search->maxPrice) && $ignorePrice === false) {
+             $query = $query
+                 ->andWhere('r.price >= :maxPrice')
+                 ->setParameter('maxPrice', "%{$search->maxPrice}%");
+         }
+
+         if (!empty($search->categories)) {
+             $query = $query
+                 ->andWhere('c.idCategory IN (:categories)')
+                 ->setParameter('categories', $search->categories);
+         }
+          return $query;
+     }
 }
