@@ -3,17 +3,32 @@
     <head>
         <meta charset="UTF-8">
         <title>{% block title %}Welcome!{% endblock %}</title>
-        {# Run `composer require symfony/webpack-encore-bundle`
-           and uncomment the following Encore helpers to start using Symfony UX #}
-        {% block stylesheets %}
-            {#{{ encore_entry_link_tags('app') }}#}
-        {% endblock %}
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootswatch/4.5.2/sandstone/bootstrap.min.css" integrity="sha384-zEpdAL7W11eTKeoBJK1g79kgl9qjP7g84KfK3AZsuonx38n8ad+f5ZgXtoSDxPOh" crossorigin="anonymous">
+        {% block stylesheets %}{% endblock %}
+        <style>
+            .grid {
+                display: grid;
+                grid-template-columns: repeat(3, 1fr);
+                grid-gap:20px;
+            }
 
+            .filter {
+                display: block;
+                position: sticky;
+                top: 20px;
+            }
+        </style>
+        {{ encore_entry_link_tags('app') }}
+        {{ encore_entry_script_tags('app') | replace({'src=': 'defer src='}) | raw}}
         {% block javascripts %}
-            {#{{ encore_entry_script_tags('app') }}#}
         {% endblock %}
     </head>
     <body>
-        {% block body %}{% endblock %}
+        <nav class="navbar navvar-dark bg-primary">
+            <a href="/" class="navbar-brand mb-0 h1">Recettes</a>
+        </nav>
+       <div style="margin-top:5rem;">
+         {% block body %}{% endblock %}
+       </div>
     </body>
 </html>

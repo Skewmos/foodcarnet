@@ -1,0 +1,35 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Fix index{% endblock %}
+
+{% block body %}
+    <h1>Fix index</h1>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Idfix</th>
+                <th>Name</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for fix in fixes %}
+            <tr>
+                <td>{{ fix.idfix }}</td>
+                <td>{{ fix.name }}</td>
+                <td>
+                    <a href="{{ path('fix_show', {'idfix': fix.idfix}) }}">show</a>
+                    <a href="{{ path('fix_edit', {'idfix': fix.idfix}) }}">edit</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="3">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <a href="{{ path('fix_new') }}">Create new</a>
+{% endblock %}
