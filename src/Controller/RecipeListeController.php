@@ -13,7 +13,7 @@ use Symfony\Component\Routing\Annotation\Route;
 class RecipeListeController extends AbstractController
 {
     /**
-     * @Route("/recipe", name="recipe")
+     * @Route("/recipeListe", name="recipeListe")
      * @param RecipeRepository $recipeRepository
      * @param Request $request
      * @return Response
@@ -26,7 +26,7 @@ class RecipeListeController extends AbstractController
         $form->handleRequest($request);
         [$minPrice, $maxPrice] = $recipeRepository->findMinMax($data);
         $recipes = $recipeRepository->findSearch($data);
-        return $this->render('recipe/index.html.twig', [
+        return $this->render('recipeListe/index.html.twig', [
             'recipes' => $recipes,
             'form' => $form->createView(),
             'minPrice' => $minPrice,

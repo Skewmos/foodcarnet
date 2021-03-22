@@ -30,7 +30,7 @@ class RecipeRepository extends ServiceEntityRepository
     }
 
     /**
-     * Get all recipe  by search
+     * Get all recipeListe  by search
      * @param SearchData $search
      * @return \Knp\Component\Pager\Pagination\PaginationInterface
      */

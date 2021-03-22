@@ -1,0 +1,20 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Panel Admin {% endblock %}
+
+{% block body %}
+<div class="container">
+    <div class="row">
+        <div class="col-md-6 offset-md-3">
+            <div class="jumbotron">
+                <h2 class="text-center">Panel admin</h2>
+            </div>
+        </div>
+    </div>
+    <a href="./fix" class="btn btn-primary">Fix</a>
+    <a href="./category" class="btn btn-primary">Category</a>
+    <a href="./recipe" class="btn btn-primary">Recipe</a>
+    <a href="./image" class="btn btn-primary">Image</a>
+    <a href="./user" class="btn btn-danger">Utilisateur</a>
+</div>
+{% endblock %}

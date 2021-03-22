@@ -6,7 +6,7 @@
     <div class="container">
         <div class="row">
             <div class="col-md-3">
-                {% include 'recipe/_filter.html.twig'  with {form: form, minPrice: minPrice, maxPrice: maxPrice} only%}
+                {% include 'recipeListe/_filter.html.twig'  with {form: form, minPrice: minPrice, maxPrice: maxPrice} only%}
             </div>
             <div class="col-md-9">
                 <div class="d-flex justify-content-end mb-2">
@@ -14,7 +14,7 @@
                 </div>
                 <div class="grid">
                     {% for recipe in  recipes %}
-                        {% include 'recipe/_card.html.twig' with  {recipe: recipe} only %}
+                        {% include 'recipeListe/_card.html.twig' with  {recipe: recipe} only %}
                      {% endfor %}
                 </div>
 
